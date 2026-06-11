@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZAMOV Second Me - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">A</div>
+                    <span class="logo-text">AZAMOV Admin</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-page="users">
+                    <span class="nav-icon">👥</span>
+                    <span>Foydalanuvchilar</span>
+                </a>
+                <a href="#" class="nav-item" data-page="missions">
+                    <span class="nav-icon">🎯</span>
+                    <span>Vazifalar</span>
+                </a>
+                <a href="#" class="nav-item" data-page="notifications">
+                    <span class="nav-icon">🔔</span>
+                    <span>Bildirishnomalar</span>
+                </a>
+                <a href="#" class="nav-item" data-page="analytics">
+                    <span class="nav-icon">📈</span>
+                    <span>Analitika</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <h1 id="page-title">Dashboard</h1>
+                <div class="topbar-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="Qidirish..." id="search-input">
+                    </div>
+                    <button class="btn btn-primary" id="logout-btn">Chiqish</button>
+                </div>
+            </header>
+
+            <!-- Dashboard Page -->
+            <div id="page-dashboard" class="page active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">👥</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="total-users">0</div>
+                            <div class="stat-label">Jami foydalanuvchilar</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">📈</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="daily-active">0</div>
+                            <div class="stat-label">Kunlik faol</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">💎</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="premium-users">0</div>
+                            <div class="stat-label">Premium a'zolar</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">💰</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="revenue">0 UZS</div>
+                            <div class="stat-label">Daromad</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="card chart-card">
+                        <h3>Foydalanuvchilar o'sishi</h3>
+                        <canvas id="user-growth-chart"></canvas>
+                    </div>
+                    <div class="card chart-card">
+                        <h3>Eng ko'p ishlatilgan funksiyalar</h3>
+                        <canvas id="feature-usage-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Page -->
+            <div id="page-users" class="page">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Foydalanuvchilar ro'yxati</h3>
+                        <div class="card-actions">
+                            <input type="text" placeholder="Qidirish..." class="search-input" id="user-search">
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Ism</th>
+                                    <th>Email</th>
+                                    <th>Yosh</th>
+                                    <th>Level</th>
+                                    <th>Streak</th>
+                                    <th>Premium</th>
+                                    <th>Amallar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-table-body">
+                                <tr><td colspan="7" class="empty-state">Yuklanmoqda...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Missions Page -->
+            <div id="page-missions" class="page">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Vazifalar boshqaruvi</h3>
+                        <button class="btn btn-primary" id="add-mission-btn">
+                            + Vazifa qo'shish
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Emoji</th>
+                                    <th>Nomi</th>
+                                    <th>Kategoriya</th>
+                                    <th>Qiyinlik</th>
+                                    <th>XP</th>
+                                    <th>Premium</th>
+                                    <th>Amallar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="missions-table-body">
+                                <tr><td colspan="7" class="empty-state">Yuklanmoqda...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Page -->
+            <div id="page-notifications" class="page">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Broadcast xabar yuborish</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="notification-form">
+                            <div class="form-group">
+                                <label>Sarlavha</label>
+                                <input type="text" id="notif-title" placeholder="Xabar sarlavhasi" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Xabar matni</label>
+                                <textarea id="notif-body" placeholder="Xabar matni..." rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Rasm URL (ixtiyoriy)</label>
+                                <input type="url" id="notif-image" placeholder="https://...">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Xabar yuborish</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Page -->
+            <div id="page-analytics" class="page">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">💬</div>
+                        <div class="stat-info">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Jami chatlar</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">✅</div>
+                        <div class="stat-info">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Tugatilgan vazifalar</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">⚡</div>
+                        <div class="stat-info">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Jami XP</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">🔥</div>
+                        <div class="stat-info">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">O'rtacha streak</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card chart-card" style="margin-top: 24px;">
+                    <h3>Kunlik faollik</h3>
+                    <canvas id="daily-activity-chart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mission Modal -->
+    <div id="mission-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Vazifa qo'shish</h3>
+                <button class="modal-close" id="close-mission-modal">&times;</button>
+            </div>
+            <form id="mission-form">
+                <div class="form-group">
+                    <label>Emoji</label>
+                    <input type="text" id="mission-emoji" placeholder="🎯" required>
+                </div>
+                <div class="form-group">
+                    <label>Nomi</label>
+                    <input type="text" id="mission-title" placeholder="Vazifa nomi" required>
+                </div>
+                <div class="form-group">
+                    <label>Tavsif</label>
+                    <textarea id="mission-description" placeholder="Vazifa tavsifi" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Kategoriya</label>
+                        <select id="mission-category">
+                            <option value="learning">O'qish</option>
+                            <option value="reading">Kitob</option>
+                            <option value="health">Salomatlik</option>
+                            <option value="creative">Kreativ</option>
+                            <option value="social">Ijtimoiy</option>
+                            <option value="productivity">Mahsuldorlik</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Qiyinlik</label>
+                        <select id="mission-difficulty">
+                            <option value="easy">Oson</option>
+                            <option value="medium">O'rta</option>
+                            <option value="hard">Qiyin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>XP</label>
+                        <input type="number" id="mission-xp" value="10" min="5" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label>Vaqti (daqiqa)</label>
+                        <input type="number" id="mission-time" value="30" min="5" max="180">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="mission-premium"> Premium faqat
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-mission">Bekor qilish</button>
+                    <button type="submit" class="btn btn-primary">Saqlash</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

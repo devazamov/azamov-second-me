@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "18016621742",
+    "project_id": "azamov-second-me",
+    "storage_bucket": "azamov-second-me.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18016621742:android:d5de3bb7a74f7c8104493f",
+        "android_client_info": {
+          "package_name": "uz.azamov.azamov_second_me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18016621742-g4fvq7869vvbrpv2t2o2go2hjek0ilhe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHVjNF9pK-TdYJdXGvaw2VUmOAIEf5QGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18016621742-g4fvq7869vvbrpv2t2o2go2hjek0ilhe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
