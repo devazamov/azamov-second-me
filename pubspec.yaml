@@ -61,12 +61,12 @@ dependencies:
   # Voice Input
   speech_to_text: ^7.0.1
 
-  # Local Notifications
-  flutter_local_notifications: ^22.0.0
-  google_generative_ai: ^0.4.7
-  flutter_dotenv: ^6.0.1
-  lottie: ^3.3.3
-  share_plus: ^12.0.2
+# Local Notifications
+flutter_local_notifications: ^20.1.0
+google_generative_ai: ^0.4.7
+flutter_dotenv: ^6.0.1
+lottie: ^3.3.3
+share_plus: ^11.1.0
 
 dev_dependencies:
   flutter_test:
